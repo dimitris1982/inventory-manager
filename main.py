@@ -12,11 +12,19 @@ while choice != 4:
     print("3. Εμφάνιση αποθέματος")
     print("4. Έξοδος")
 
-    choice = int(input("Δώσε επιλογή: "))
+    try:
+        choice = int(input("Δώσε επιλογή: "))
+    except ValueError:
+        print("Γράψε έναν ακέραιο αριθμό από 1 έως 4.")
+        continue
 
     if choice == 1:
         print("Επέλεξες παραλαβή")
-        quantity = int(input("Δώσε ποσότητα παραλαβής: "))
+        try:
+            quantity = int(input("Δώσε ποσότητα παραλαβής: "))
+        except ValueError:
+            print("Η ποσότητα πρέπει να είναι ακέραιος αριθμός.")
+            continue
         if quantity > 0:
             stock = stock + quantity
             total_received = total_received + quantity
@@ -25,7 +33,11 @@ while choice != 4:
             print("Η ποσότητα πρέπει να είναι θετική")
     elif choice == 2:
         print("Επέλεξες πώληση")
-        sale = int(input("Δώσε ποσότητα πώλησης: "))
+        try:
+            sale = int(input("Δώσε ποσότητα πώλησης: "))
+        except ValueError:
+            print("Η ποσότητα πρέπει να είναι ακέραιος αριθμός.")
+            continue
         if sale <= 0:
             print("Η ποσότητα πρέπει να είναι θετική")
         elif sale > stock:
